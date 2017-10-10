@@ -23,6 +23,7 @@ const data = [{
     }
 ];
 
+// Static files
 server.route({
     method: 'GET',
     path: '/public/{filename*}',
@@ -32,7 +33,7 @@ server.route({
 });
 
 
-
+// Get
 server.route({
     method: 'GET',
     path: '/',
@@ -81,7 +82,7 @@ server.route({
     }
 });
 
-
+// Static entry
 server.register(require('inert'), (err) => {
 
     if (err) {
@@ -97,8 +98,8 @@ server.register(require('inert'), (err) => {
     });
 });
 
-// MongoDB
 
+// MongoDB
 // GET ALL
 server.route({
     method: ['GET'],
@@ -112,7 +113,7 @@ server.route({
 });
 
 
-// GET BY ID => DETAIL
+// GET BY ID => DETAILS
 server.route({
     method: ['GET'],
     path: '/product/{id}',
