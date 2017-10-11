@@ -2,7 +2,7 @@
   "name": "hapi-tutorials",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^6.2.5",
@@ -23,8 +23,10 @@
   },
   "devDependencies": {},
   "scripts": {
+    "client": "webpack",
+    "server": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Ngo Thanh Tung - Softech Aptech",
   "license": "ISC"
 }
