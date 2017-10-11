@@ -6,8 +6,8 @@ export default class Layout extends React.Component {
 	constructor(props) {
 		super(props);
 	}
-	
-	render() {		
+
+	render() {
 		return (
 			<div>
 				<Header text="Hello React" />

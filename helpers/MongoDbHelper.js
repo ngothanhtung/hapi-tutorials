@@ -31,7 +31,7 @@ MongoDbHelper.updateDocument = function (id, jsonData, collectionName, callback)
         if (err) console.log('MONGODB ERROR', err);
         else {
             var collection = db.collection(collectionName);
-            collection.updateOne({_id: ObjectID(id)}, {$set: jsonData}, function (err, result) {
+            collection.updateOne({ _id: ObjectID(id) }, { $set: jsonData }, function (err, result) {
                 if (err) console.log('MONGODB ERROR', err);
                 else {
                     db.close();
@@ -48,7 +48,7 @@ MongoDbHelper.removeDocument = function (id, collectionName, callback) {
         if (err) console.log('MONGODB ERROR', err);
         else {
             var collection = db.collection(collectionName);
-            collection.removeOne({_id: ObjectID(id)}, function (err, result) {
+            collection.removeOne({ _id: ObjectID(id) }, function (err, result) {
                 if (err) console.log('MONGODB ERROR', err);
                 else {
                     db.close();
@@ -82,7 +82,7 @@ MongoDbHelper.findDocument = function (id, collectionName, callback) {
         if (err) console.log('MONGODB ERROR', err);
         else {
             var collection = db.collection(collectionName);
-            collection.findOne({_id: ObjectID(id)}, function (err, result) {
+            collection.findOne({ _id: ObjectID(id) }, function (err, result) {
                 if (err) console.log('MONGODB ERROR', err);
                 else {
                     db.close();

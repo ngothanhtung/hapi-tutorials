@@ -12,15 +12,15 @@ server.connection({
 });
 
 const data = [{
-        id: 1,
-        name: 'Samsung Galaxy S8',
-        price: 900
-    },
-    {
-        id: 2,
-        name: 'Samsung Galaxy S8+',
-        price: 1000
-    }
+    id: 1,
+    name: 'Samsung Galaxy S8',
+    price: 900
+},
+{
+    id: 2,
+    name: 'Samsung Galaxy S8+',
+    price: 1000
+}
 ];
 
 // Static files
@@ -104,7 +104,7 @@ server.register(require('inert'), (err) => {
 server.route({
     method: ['GET'],
     path: '/product/all',
-    handler: function (request, reply) {        
+    handler: function (request, reply) {
         var collectionName = 'products';
         db.findDocuments({}, collectionName, function (result) {
             reply(result);
@@ -120,7 +120,7 @@ server.route({
     handler: function (request, reply) {
         var id = request.params.id;
         var collectionName = 'products';
-        db.findDocument(id, collectionName, function (result) {            
+        db.findDocument(id, collectionName, function (result) {
             reply(result);
         });
     }
