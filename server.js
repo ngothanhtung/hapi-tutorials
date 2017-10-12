@@ -11,29 +11,17 @@ server.connection({
     port: 9000
 });
 
-const data = [{
-    id: 1,
-    name: 'Samsung Galaxy S8',
-    price: 900
-},
-{
-    id: 2,
-    name: 'Samsung Galaxy S8+',
-    price: 1000
-}
-];
+// Start the server
+server.start((err) => {
 
-// Static files
-server.route({
-    method: 'GET',
-    path: '/public/{filename*}',
-    handler: function (request, reply) {
-        reply.file("./public/" + request.params.filename);
+    if (err) {
+        throw err;
     }
+    console.log('Server running at:', server.info.uri);
 });
 
-
 // Get
+/*
 server.route({
     method: 'GET',
     path: '/',
@@ -41,17 +29,32 @@ server.route({
         reply('Hello, world!');
     }
 });
+*/
 
 // Add the route
+/*
 server.route({
     method: 'GET',
     path: '/data',
     handler: function (request, reply) {
+        const data = [{
+            id: 1,
+            name: 'Samsung Galaxy S8',
+            price: 900
+        },
+        {
+            id: 2,
+            name: 'Samsung Galaxy S8+',
+            price: 1000
+        }];
+
         reply(data);
     }
 });
+*/
 
 //Path
+/*
 server.route({
     method: 'GET',
     path: '/hello/{user}',
@@ -59,19 +62,22 @@ server.route({
         reply('Hello ' + encodeURIComponent(request.params.user) + '!');
     }
 });
-
+*/
 
 // Optional parameters
-// server.route({
-//     method: 'GET',
-//     path: '/hello/{user?}',
-//     handler: function (request, reply) {
-//         const user = request.params.user ? encodeURIComponent(request.params.user) : 'stranger';
-//         reply('Hello ' + user + '!');
-//     }
-// });
+/*
+server.route({
+    method: 'GET',
+    path: '/hello/{user?}',
+    handler: function (request, reply) {
+        const user = request.params.user ? encodeURIComponent(request.params.user) : 'stranger';
+        reply('Hello ' + user + '!');
+    }
+});
+*/
 
 // Multi-segment parameters
+/*
 server.route({
     method: 'GET',
     path: '/hello/{user}/{deparmemnt}',
@@ -81,6 +87,7 @@ server.route({
         reply('Hello ' + user + ' @ ' + deparmemnt + '!');
     }
 });
+*/
 
 // Static entry
 server.register(require('inert'), (err) => {
@@ -98,6 +105,14 @@ server.register(require('inert'), (err) => {
     });
 });
 
+// Static files
+server.route({
+    method: 'GET',
+    path: '/public/{filename*}',
+    handler: function (request, reply) {
+        reply.file("./public/" + request.params.filename);
+    }
+});
 
 // MongoDB
 // GET ALL
@@ -167,13 +182,4 @@ server.route({
             reply(result);
         });
     }
-});
-
-// Start the server
-server.start((err) => {
-
-    if (err) {
-        throw err;
-    }
-    console.log('Server running at:', server.info.uri);
 });
