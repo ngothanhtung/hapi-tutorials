@@ -8,7 +8,8 @@ var db = require('./helpers/MongoDbHelper');
 const server = new Hapi.Server();
 server.connection({
     host: 'localhost',
-    port: 9000
+    port: 3000,
+    routes: { cors: true }
 });
 
 // Start the server
@@ -19,6 +20,8 @@ server.start((err) => {
     }
     console.log('Server running at:', server.info.uri);
 });
+
+
 
 // Get
 /*

@@ -14,6 +14,7 @@ class Product extends Component {
 				_id: '',
 				name: '',
 				price: 0,
+				discount: 0,
 				imageUrl: ''
 			}
 		}
@@ -39,6 +40,7 @@ class Product extends Component {
 			var insertData = JSON.stringify({
 				name: ReactDOM.findDOMNode(this.refs.product_name).value,
 				price: ReactDOM.findDOMNode(this.refs.product_price).value,
+				discount: ReactDOM.findDOMNode(this.refs.product_discount).value,
 				imageUrl: ReactDOM.findDOMNode(this.refs.product_image_url).value,
 			});
 
@@ -71,6 +73,7 @@ class Product extends Component {
 			var editData = JSON.stringify({
 				name: ReactDOM.findDOMNode(this.refs.product_name).value,
 				price: ReactDOM.findDOMNode(this.refs.product_price).value,
+				discount: ReactDOM.findDOMNode(this.refs.product_discount).value,
 				imageUrl: ReactDOM.findDOMNode(this.refs.product_image_url).value,
 			});
 
@@ -89,12 +92,14 @@ class Product extends Component {
 
 							products[i].name = ReactDOM.findDOMNode(this.refs.product_name).value;
 							products[i].price = ReactDOM.findDOMNode(this.refs.product_price).value;
+							products[i].discount = ReactDOM.findDOMNode(this.refs.product_discount).value;
 							products[i].imageUrl = ReactDOM.findDOMNode(this.refs.product_image_url).value;
 
 							component.state.product = {
 								_id: '',
 								name: '',
 								price: 0,
+								discount: 0,
 								imageUrl: ''
 							};
 
@@ -163,6 +168,7 @@ class Product extends Component {
 								<th>Id</th>
 								<th>Name</th>
 								<th>Price</th>
+								<th>Discount</th>
 								<th>Image</th>
 								<th></th>
 							</tr>
@@ -173,6 +179,7 @@ class Product extends Component {
 									<td>{p._id}</td>
 									<td>{p.name}</td>
 									<td>{p.price}</td>
+									<td>{p.discount}</td>
 									<td>
 										<img src={p.imageUrl} height="100px" />
 									</td>
@@ -199,6 +206,10 @@ class Product extends Component {
 						<div class="form-group">
 							<label>Price:</label>
 							<input type="text" class="input form-control" ref="product_price" value={this.state.product.price} onChange={this.handleChange.bind(this, 'price')} />
+						</div>
+						<div class="form-group">
+							<label>Discount:</label>
+							<input type="text" class="input form-control" ref="product_discount" value={this.state.product.discount} onChange={this.handleChange.bind(this, 'discount')} />
 						</div>
 						<div class="form-group">
 							<label>Image Url:</label>
