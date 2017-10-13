@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+const baseUrl = "/product",
+	
+
 class Product extends Component {
 	constructor(props) {
 		super(props);
@@ -40,7 +43,7 @@ class Product extends Component {
 				imageUrl: ReactDOM.findDOMNode(this.refs.product_image_url).value,
 			});
 
-			fetch('/product', {
+			fetch(baseUrl, {
 				method: 'POST',
 				body: insertData,
 				headers: new Headers({
@@ -72,7 +75,7 @@ class Product extends Component {
 				imageUrl: ReactDOM.findDOMNode(this.refs.product_image_url).value,
 			});
 
-			fetch('/product/' + productId, {
+			fetch(baseUrl + '/' + productId, {
 				method: 'PUT',
 				body: editData,
 				headers: new Headers({
@@ -121,7 +124,7 @@ class Product extends Component {
 	// DELETE
 	handleDelete(productId, event) {
 		var component = this;
-		fetch('/product/' + productId, {
+		fetch(baseUrl + '/' + productId, {
 			method: 'DELETE',
 			headers: new Headers({
 				'Content-Type': 'application/json'
@@ -142,7 +145,7 @@ class Product extends Component {
 	}
 
 	componentDidMount() {
-		fetch('/product/all')
+		fetch(baseUrl + '/all')
 			.then(res => res.json())
 			.then((data) => {
 				this.setState({ products: data });
@@ -177,7 +180,7 @@ class Product extends Component {
 									<td class="text-right">
 										<div class="btn-group">
 											<button class="btn btn-danger" onClick={this.handleDelete.bind(this, p._id)}>Delete</button>
-											<button class="btn btn-info" onClick={this.handleSelect.bind(this, p._id)}>Select</button>
+											<button class="btn btn-info" onClick={this.handleSelect.bind(this, p._id)}>Select</button>											
 										</div>
 									</td>
 								</tr>
