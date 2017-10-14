@@ -38,10 +38,10 @@ class Product extends Component {
 		if (productId.length === 0) {
 			// INSERT
 			var insertData = JSON.stringify({
-				name: ReactDOM.findDOMNode(this.refs.product_name).value,
-				price: ReactDOM.findDOMNode(this.refs.product_price).value,
-				discount: ReactDOM.findDOMNode(this.refs.product_discount).value,
-				imageUrl: ReactDOM.findDOMNode(this.refs.product_image_url).value,
+				name: this.state.product.name,
+				price: this.state.product.price,
+				discount: this.state.product.discount,
+				imageUrl: this.state.product.imageUrl
 			});
 
 			fetch(baseUrl, {
@@ -60,6 +60,7 @@ class Product extends Component {
 						_id: '',
 						name: '',
 						price: 0,
+						discount: 0,
 						imageUrl: ''
 					};
 
@@ -71,10 +72,10 @@ class Product extends Component {
 		} else {
 			// EDIT
 			var editData = JSON.stringify({
-				name: ReactDOM.findDOMNode(this.refs.product_name).value,
-				price: ReactDOM.findDOMNode(this.refs.product_price).value,
-				discount: ReactDOM.findDOMNode(this.refs.product_discount).value,
-				imageUrl: ReactDOM.findDOMNode(this.refs.product_image_url).value,
+				name: this.state.product.name,
+				price: this.state.product.price,
+				discount: this.state.product.discount,
+				imageUrl: this.state.product.imageUrl
 			});
 
 			fetch(baseUrl + '/' + productId, {
@@ -90,11 +91,8 @@ class Product extends Component {
 					for (var i = 0; i < products.length; i++) {
 						if (products[i]._id === productId) {
 
-							products[i].name = ReactDOM.findDOMNode(this.refs.product_name).value;
-							products[i].price = ReactDOM.findDOMNode(this.refs.product_price).value;
-							products[i].discount = ReactDOM.findDOMNode(this.refs.product_discount).value;
-							products[i].imageUrl = ReactDOM.findDOMNode(this.refs.product_image_url).value;
-
+							products[i] = component.state.product
+							
 							component.state.product = {
 								_id: '',
 								name: '',
