@@ -8,7 +8,7 @@ var db = require('./helpers/MongoDbHelper');
 const server = new Hapi.Server();
 server.connection({
     host: 'localhost',
-    port: 3000,
+    port: 9000,
     routes: { cors: true }
 });
 
